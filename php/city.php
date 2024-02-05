@@ -25,7 +25,7 @@ if (strpos($headers[0], '200') !== false) {
     $pressure = $data['main']['pressure'];
 
     $iconURL = $data['weather'][0]['icon'];
-    $iconURL = "https://openweathermap.org/img/wn/$iconURL@2x.png";
+    $iconURL = "https://openweathermap.org/img/wn/$iconURL.png"; //icon@2x.png also
 } else {
     // Handle API error
     $_SESSION['error'] = "Can't find the city, check spelling.";
@@ -48,7 +48,7 @@ if (strpos($headers[0], '200') !== false) {
         </header>
         <nav>
             <form action="../php/city.php" method="GET">
-                <input type="text" role="search" placeholder="Wheather in the city" name="city">
+                <input type="text" role="search" placeholder="Weather in the city" name="city">
                 <button><i class="bi bi-search"></i></button>
             </form>
         </nav>

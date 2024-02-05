@@ -19,7 +19,7 @@ if(isset($_SESSION["error"])){
         </header>
         <nav>
             <form action="php/city.php" method="GET">
-                <input type="text" role="search" placeholder="Wheather in the city" name="city">
+                <input type="text" role="search" placeholder="Weather in the city" name="city">
                 <button><i class="bi bi-search"></i></button>
             </form>
         </nav>
