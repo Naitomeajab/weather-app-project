@@ -36,3 +36,9 @@ header, nav, main, footer {
 footer {
     font-size: 11px;
 }
+.result {
+    width: 50%;
+    background-color: plum;
+    border-radius: 25px;
+    padding: 30px;
+}

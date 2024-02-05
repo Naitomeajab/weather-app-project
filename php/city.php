@@ -6,7 +6,6 @@ if (!isset($_GET["city"])) {
 $apiKey = '1a59599823b73a08ff71aba0ad51f85c';
 $city = ucfirst($_GET['city']);
 $lang = 'en';
-$userIP = $_SERVER['REMOTE_ADDR'];
 
 $apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&lang=$lang&units=metric";
 
@@ -16,16 +15,17 @@ if (strpos($headers[0], '200') !== false) {
     $response = file_get_contents($apiUrl);
     $data = json_decode($response, true);    
 
-    echo "<h1>$city</h1>";
-
     $temperature = $data['main']['temp'];
-    $description = $data['weather'][0]['description'];
+    $temperatureMin = $data['main']['temp_min'];
+    $temperatureMax = $data['main']['temp_max'];
 
-    if (isset($temperature)) {
-        echo "Temperature: $temperature °C, Description: $description";
-    } else {
-        echo "Temperature data not available.";
-    }
+    $description = $data['weather'][0]['description'];
+    $humidty = $data['main']['humidity'];
+
+    $pressure = $data['main']['pressure'];
+
+    $iconURL = $data['weather'][0]['icon'];
+    $iconURL = "https://openweathermap.org/img/wn/$iconURL@2x.png";
 } else {
     // Handle API error
     $_SESSION['error'] = "Can't find the city, check spelling.";
@@ -53,6 +53,20 @@ if (strpos($headers[0], '200') !== false) {
             </form>
         </nav>
         <main>
+            <div class="result">
+                <h2>Current weather for <?=$city?>:</h2>
+                <p>
+                    Temperature: <?=$temperature?> °C<br>
+                    Minimal temperature: <?=$temperatureMin?> °C<br>
+                    Maximum temperature: <?=$temperatureMax?> °C
+                </p>
+                <img src=<?=$iconURL?> alt=<?=$description?>>
+                <p>
+                    Weather description: <?=$description?><br>
+                    Humidity: <?=$humidty?>%
+                </p>
+                <p>Pressure: <?=$pressure?>hPa</p>
+            </div>
         </main>
         <footer>
             <p>

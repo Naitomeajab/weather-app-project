@@ -1,1 +1,1 @@
-Weather app
+Weather app, my first project that includes API
