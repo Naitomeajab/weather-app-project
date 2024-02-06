@@ -36,9 +36,21 @@ header, nav, main, footer {
 footer {
     font-size: 11px;
 }
+
+
+/* RESULT */
 .result {
     width: 50%;
     background-color: plum;
     border-radius: 25px;
     padding: 30px;
+}
+#info-wind {
+    display: inline-flex;
+    align-items: center;
+}
+#wind-arrow {
+    width: 10%;
+    height: 10%;
+    transform-origin: center;
 }
