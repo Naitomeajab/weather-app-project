@@ -4,13 +4,15 @@ if (!isset($_GET["city"])) {
     header("Location: ../index.php");
 }
 define("API_KEY", "1a59599823b73a08ff71aba0ad51f85c");
-$city = ucfirst($_GET['city']);
-$lang = 'en';
+//Sanitize and Capitalize city name
+$city = $_GET['city'];
+$city= preg_replace("/[^a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s]+/", "", $city);
+$city = ucfirst($city);
 
+$lang = 'en';
 $apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=$city&appid=" . API_KEY. "&lang=$lang&units=metric";
 
 $headers = get_headers($apiUrl);
-
 if (strpos($headers[0], '200') !== false) {
     $response = file_get_contents($apiUrl);
     $data = json_decode($response, true);    
