@@ -1,10 +1,12 @@
 {
     "search-placeholder": "City",
     "title": "Weather - Naitomea",
+
     "site-description": "Informations",
     "site-description1": "Source code",
     "site-description2": "Data provided by: ",
     "site-map": "Site map",
+    "site-author": "Made by: ",
 
     "result-title": "Current weather for: ",
     "result-title1": "time of update: ",

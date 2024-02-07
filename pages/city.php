@@ -9,19 +9,13 @@ if (isset($_COOKIE["lang"])) {
     $lang = $_COOKIE["lang"];
     $translationFile = '../lang/'.$_COOKIE["lang"].'.json';
     $translations = json_decode(file_get_contents($translationFile), true);
-
-    echo "cookie is existent with value: ".$_COOKIE["lang"];
-    echo "<br>";
-    echo "The file is $translationFile";
 } else {
     //create cookie for one week, base value = browser's language
     $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); 
     $translationFile = '../lang/'.$lang.'.json';
     $translations = json_decode(file_get_contents($translationFile), true);
 
-    setcookie("lang", $value, time() + (60 * 60 * 24 * 7),"/");
-
-    echo "cookie created with value: ".$value;   
+    setcookie("lang", $value, time() + (60 * 60 * 24 * 7),"/");   
 }
 //Sanitize and Capitalize city name
 $city = $_GET['city'];

@@ -14,8 +14,9 @@
         <nav>
             <form action="/pages/city.php" method="GET">
                 <input type="text" role="search" placeholder=<?=$translations['search-placeholder']?> name="city">
-                <button><i class="bi bi-search"></i></button>
+                <button type="submit"><i class="bi bi-search"></i></button>
             </form>
-            <button onclick="changeLanguage('pl')"><img src="/images/pl.jpg" width="25%" height="25%"></button>
-            <button onclick="changeLanguage('en')"><img src="/images/en.jpg" width="25%" height="25%"></button>
+            <br>
+            <button onclick="changeLanguage('pl')" class="lang-button"><img src="/images/pl.jpg" width="100%" height="100%"></button>
+            <button onclick="changeLanguage('en')" class="lang-button"><img src="/images/en.jpg" width="100%" height="100%"></button>
         </nav>

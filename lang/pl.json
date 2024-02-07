@@ -1,10 +1,12 @@
 {
     "search-placeholder": "Miasto",
     "title": "Pogoda - Naitomea",
+    
     "site-description": "Informacje",
     "site-description1": "Kod źródłowy",
     "site-description2": "Dane zapewnianie przez: ",
     "site-map": "Mapa strony",
+    "site-author": "Zrobione przez: ",
 
     "result-title": "Obecna pogoda w mieście: ",
     "result-title1": "Czas danych: ",

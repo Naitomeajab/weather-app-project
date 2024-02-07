@@ -1,5 +1,8 @@
 function changeLanguage(language) {
-    document.cookie = "lang=" + language;
+    var expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 7);
+    var expires = expirationDate.toUTCString();
+    document.cookie = "lang=" + language + "; expires=" + expires + "; path=/";
+
     location.assign(window.location.href);
-    console.log("IT WENT THROUGH! THE LANGUAGE IS" + language)
 }
