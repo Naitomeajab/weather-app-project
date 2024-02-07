@@ -1,0 +1,28 @@
+{
+    "search-placeholder": "Miasto",
+    "title": "Pogoda - Naitomea",
+    "site-description": "Informacje",
+    "site-description1": "Kod źródłowy",
+    "site-description2": "Dane zapewnianie przez: ",
+    "site-map": "Mapa strony",
+
+    "result-title": "Obecna pogoda w mieście: ",
+    "result-title1": "Czas danych: ",
+
+    "result-temp": "Temperatura: ",
+    "result-temp-felt": "Odczuwalna: ",
+    "result-temp-min": "Minimalna: ",
+    "result-temp-max": "Maksymalna: ",
+    
+    "result-weather": "Opis: ",
+    "result-weather-hum": "Wilgotność: ",
+    "result-weather-clo": "Zachmurzenie: ",
+
+    "result-wind": "Prędkość wiatru: ",
+    "result-wind-dir": "Kierunek wiatru: ",
+
+    "result-pressure": "Ciśnienie: ",
+
+    "result-sun-rise": "Wschód słońca: ",
+    "result-sun-set": "Zachód słońca: "
+}
