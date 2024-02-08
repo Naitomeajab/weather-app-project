@@ -1,22 +1,13 @@
 <?php
+$serverRoot = $_SERVER['DOCUMENT_ROOT'];
 session_start();
 if (!isset($_GET["city"])) {
     header("Location: ../index.php");
 }
 define("API_KEY", "1a59599823b73a08ff71aba0ad51f85c");
 //Translation handling
-if (isset($_COOKIE["lang"])) {
-    $lang = $_COOKIE["lang"];
-    $translationFile = '../lang/'.$_COOKIE["lang"].'.json';
-    $translations = json_decode(file_get_contents($translationFile), true);
-} else {
-    //create cookie for one week, base value = browser's language
-    $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); 
-    $translationFile = '../lang/'.$lang.'.json';
-    $translations = json_decode(file_get_contents($translationFile), true);
+require("../php/translation.php");
 
-    setcookie("lang", $value, time() + (60 * 60 * 24 * 7),"/");   
-}
 //Sanitize and Capitalize city name
 $city = $_GET['city'];
 $city= preg_replace("/[^a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s]+/", "", $city);
@@ -27,33 +18,33 @@ $apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=$city&appid=" . API_
 $headers = get_headers($apiUrl);
 if (strpos($headers[0], '200') !== false) {
     $response = file_get_contents($apiUrl);
-    $data = json_decode($response, true);    
+    $result = json_decode($response, true);    
 
-    $timeOfData = date("H:i", $data['dt']);
+    $timeOfData = date("H:i", $result['dt']);
 
-    $temperature = $data['main']['temp'];
-    $temperatureFelt = $data['main']['feels_like'];
-    $temperatureMin = $data['main']['temp_min'];
-    $temperatureMax = $data['main']['temp_max'];
+    $temperature = $result['main']['temp'];
+    $temperatureFelt = $result['main']['feels_like'];
+    $temperatureMin = $result['main']['temp_min'];
+    $temperatureMax = $result['main']['temp_max'];
 
-    $description = $data['weather'][0]['description'];
-    $humidty = $data['main']['humidity'];
-    $cloudiness = $data['clouds']['all'];
-    $iconURL = $data['weather'][0]['icon'];
+    $description = $result['weather'][0]['description'];
+    $humidty = $result['main']['humidity'];
+    $cloudiness = $result['clouds']['all'];
+    $iconURL = $result['weather'][0]['icon'];
     $iconURL = "https://openweathermap.org/img/wn/$iconURL.png"; //icon@2x.png also
 
-    $windSpeed = $data['wind']['speed'];
-    $windDirection = $data['wind']['deg'];
+    $windSpeed = $result['wind']['speed'];
+    $windDirection = $result['wind']['deg'];
 
-    $pressure = $data['main']['pressure'];
+    $pressure = $result['main']['pressure'];
 
-    $sunrise = $data['sys']['sunrise'];
-    $sunset = $data['sys']['sunset'];
+    $sunrise = $result['sys']['sunrise'];
+    $sunset = $result['sys']['sunset'];
 
     $sunrise = date("H:i", $sunrise);
     $sunset = date("H:i", $sunset);
 } else {
-    // Handle API error
+    //API error
     $_SESSION['error'] = "Can't find the city, check spelling.";
     header("Location: ../index.php");
 }
@@ -61,7 +52,7 @@ if (strpos($headers[0], '200') !== false) {
 <?php require('../includes/header.php') ?>
     <main>
         <div class="result">
-            <h2><?=$translations['result-title']?><?=$city?>, <?=$translations['result-title1']?><?=$timeOfData?> UTC</h2>
+            <h2><?=$translations['result-title']?><?=$city?>, <?=$translations['result-title1']?><?=$timeOfData?></h2>
             <div id="info-temperature">
                 <p>
                     <?=$translations['result-temp']?><?=$temperature?> °C<br>

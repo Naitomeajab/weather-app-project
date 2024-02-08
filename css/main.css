@@ -97,6 +97,13 @@ footer {
     line-height: 20px;
 }
 /* RESULT */
+.forecast-header {
+    background-color: lightgray;
+    width: 100%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+}
 .result {
     width: 100%;
     background-color: plum;
