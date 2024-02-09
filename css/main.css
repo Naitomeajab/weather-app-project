@@ -103,7 +103,15 @@ footer {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     box-sizing: border-box;
+    padding: 0px 40px;
+    justify-content: left;
+
+    column-gap: 20px;
 }
+.forecast-header h3 {
+    width: 200px;
+}
+.forecast-block { display: none; }
 .result {
     width: 100%;
     background-color: plum;

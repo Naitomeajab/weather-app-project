@@ -26,5 +26,29 @@
     "result-pressure": "pressure: ",
 
     "result-sun-rise": "Sunrise: ",
-    "result-sun-set": "Sunset: "
+    "result-sun-set": "Sunset: ",
+
+    "day": {
+        "Mon": "Monday",
+        "Tue": "Tuesday",
+        "Wed": "Wednesday",
+        "Thu": "Thursday",
+        "Fri": "Friday",
+        "Sat": "Saturday",
+        "Sun": "Sunday"
+    },
+    "month": {
+        "Jan": "January",
+        "Feb": "February",
+        "Mar": "March",
+        "Apr": "April",
+        "May": "May",
+        "Jun": "June",
+        "Jul": "July",
+        "Aug": "August",
+        "Sep": "September",
+        "Oct": "October",
+        "Nov": "November",
+        "Dec": "December"
+    }     
 }

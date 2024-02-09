@@ -56,8 +56,18 @@ if (strpos($headers[0], '200') !== false) {
         for($i = 1; $i <= count($groupedResults); $i++) {
         ?>
         
-        <div id="forecast-header-<?=$i?>" class="forecast-header">
-            <h3><?=$groupedResults[$i][1]["dt_txt"]?></h3>
+        <div id="forecast-header-<?=$i?>" class="forecast-header flex">
+            <h3>
+                <!-- Getting date name -->
+                <?php
+                $forecastDate = strtotime($groupedResults[$i][1]["dt_txt"]);
+                $dayName = date('D', $forecastDate);
+                $dayNumber = date('j', $forecastDate);
+                $monthName = date('M', $forecastDate);
+                echo $translations['day'][$dayName].", ".$dayNumber." ".$translations['month'][$monthName];
+                ?>
+            </h3>
+            <button onclick="expandList(<?=$i?>)" id="forecast-list-icon-<?=$i?>"><i class="bi bi-caret-right-fill"></i></button>
         </div>
 
         <?php
@@ -84,7 +94,7 @@ if (strpos($headers[0], '200') !== false) {
             $pressure = $result['main']['pressure'];            
         ?>
 
-        <div class="forecast-block-<?=$i?> result">
+        <div class="forecast-block forecast-block-<?=$i?> result">
         <h2><?=$translations['result-title']?><?=$city?>, <?=$translations['result-title1']?><?=$timeOfData?></h2>
             <div id="info-temperature">
                 <p>

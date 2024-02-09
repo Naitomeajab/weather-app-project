@@ -19,6 +19,6 @@
             <br>
             <button onclick="changeLanguage('pl')" class="lang-button"><img src="/images/pl.jpg" width="100%" height="100%"></button>
             <button onclick="changeLanguage('en')" class="lang-button"><img src="/images/en.jpg" width="100%" height="100%"></button>
-            <a href="/pages/city.php"><button>city.php</button></a>
-            <a href="/pages/forecast.php"><button>forecast.php</button></a>
+            <button onclick="redirect('city.php')">city.php</button>
+            <button onclick="redirect('forecast.php')">forecast.php</button>
         </nav>

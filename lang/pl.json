@@ -26,5 +26,29 @@
     "result-pressure": "Ciśnienie: ",
 
     "result-sun-rise": "Wschód słońca: ",
-    "result-sun-set": "Zachód słońca: "
+    "result-sun-set": "Zachód słońca: ",
+
+    "day": {
+        "Mon": "Poniedziałek",
+        "Tue": "Wtorek",
+        "Wed": "Środa",
+        "Thu": "Czwartek",
+        "Fri": "Piątek",
+        "Sat": "Sobota",
+        "Sun": "Niedziela"
+    },
+    "month": {
+        "Jan": "Styczeń",
+        "Feb": "Luty",
+        "Mar": "Marzec",
+        "Apr": "Kwiecień",
+        "May": "Maj",
+        "Jun": "Czerwiec",
+        "Jul": "Lipiec",
+        "Aug": "Sierpień",
+        "Sep": "Wrzesień",
+        "Oct": "Październik",
+        "Nov": "Listopad",
+        "Dec": "Grudzień"
+    }      
 }
