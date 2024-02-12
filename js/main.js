@@ -1,3 +1,4 @@
+document.getElementById("main").scrollIntoView({behavior: 'smooth', block: 'start'});
 function changeLanguage(language) {
     var expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 7);
@@ -23,7 +24,7 @@ function expandList(listId) {
         var computedStyle = window.getComputedStyle(element);
 
         if (computedStyle.display === 'none') {
-            element.style.display = "block";
+            element.style.display = "flex";
             buttonIcon.innerHTML = '<i class="bi bi-caret-down-fill"></i>';
         } else {
             element.style.display = "none";

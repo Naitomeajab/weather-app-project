@@ -51,7 +51,7 @@ if (strpos($headers[0], '200') !== false) {
 }
 ?>
 <?php require('../includes/header.php') ?>
-    <main class="flex">
+    <main class="flex" id="main">
         <?php
         for($i = 1; $i <= count($groupedResults); $i++) {
         ?>
@@ -94,36 +94,46 @@ if (strpos($headers[0], '200') !== false) {
             $pressure = $result['main']['pressure'];            
         ?>
 
-        <div class="forecast-block forecast-block-<?=$i?> result">
-        <h2><?=$translations['result-title']?><?=$city?>, <?=$translations['result-title1']?><?=$timeOfData?></h2>
-            <div id="info-temperature">
-                <p>
-                    <?=$translations['result-temp']?><?=$temperature?> °C<br>
-                    <?=$translations['result-temp-felt']?><?=$temperatureFelt?> °C<br>
-                    <?=$translations['result-temp-min']?><?=$temperatureMin?> °C<br>
-                    <?=$translations['result-temp-max']?><?=$temperatureMax?> °C
-                </p>
+        <div class="forecast-block forecast-block-<?=$i?> result flex">
+            <h2><?=$city?>, <?=$timeOfData?></h2>
+            <div class="result-wrapper flex">
+                <div class="info-temperature">
+                    <p>
+                        <?=$translations['result-temp']?><?=$temperature?> °C<br>
+                        <?=$translations['result-temp-felt']?><?=$temperatureFelt?> °C<br>
+                        <?=$translations['result-temp-min']?><?=$temperatureMin?> °C<br>
+                        <?=$translations['result-temp-max']?><?=$temperatureMax?> °C
+                    </p>
+                </div>
+                <div class="info-wind">
+                    <p>
+                        <?=$translations['result-wind']?><?=$windSpeed?> m/s <br>
+                        <?=$translations['result-wind-dir']?>
+                    </p>
+                    <div id="image-container">
+                        <img class="background-image" src="/images/compass.png">
+                        <img id="wind-arrow" src="/images/arrow.png" style="
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%) rotate(<?=$windDirection?>deg);
+                            width: 50%;
+                            height: 50%;
+                            transform-origin: center;
+                            ">
+                    </div>
+                </div>
             </div>
-            <hr>
-            <div id="info-weather">
-                <p>
+            <div class="result-wrapper flex">
+                <div class="info-weather">
                     <img src=<?=$iconURL?> alt=<?=$description?>> <br>
-                    <?=$translations['result-weather']?><?=$description?> <br>
-                    <?=$translations['result-weather-hum']?><?=$humidty?>% <br>
-                    <?=$translations['result-weather-clo']?><?=$cloudiness?>%
-                </p>
-            </div>
-            <hr>
-            <div id="info-wind">
-                <p>
-                    <?=$translations['result-wind']?><?=$windSpeed?> m/s <br>
-                    <?=$translations['result-wind-dir']?>
-                </p>
-                <img id="wind-arrow" src="/images/arrow.png" style="transform: rotate(<?=$windDirection?>deg)">
-            </div>
-            <hr>
-            <div class="pressure">
-                <p><?=$translations['result-pressure']?><?=$pressure?> hPa</p>
+                    <p>
+                        <?=$translations['result-weather']?><?=$description?> <br>
+                        <?=$translations['result-weather-hum']?><?=$humidty?>% <br>
+                        <?=$translations['result-weather-clo']?><?=$cloudiness?>%
+                    </p>
+                    <p><?=$translations['result-pressure']?><?=$pressure?> hPa</p>
+                </div>
             </div>
         </div>
 
