@@ -86,7 +86,7 @@ if (strpos($headers[0], '200') !== false) {
             $humidty = $result['main']['humidity'];
             $cloudiness = $result['clouds']['all'];
             $iconURL = $result['weather'][0]['icon'];
-            $iconURL = "https://openweathermap.org/img/wn/$iconURL.png"; //icon@2x.png also
+            $iconURL = "https://openweathermap.org/img/wn/$iconURL@2x.png"; //icon@2x.png also
         
             $windSpeed = $result['wind']['speed'];
             $windDirection = $result['wind']['deg'];
@@ -99,20 +99,19 @@ if (strpos($headers[0], '200') !== false) {
             <div class="result-wrapper flex">
                 <div class="info-temperature">
                     <p>
-                        <?=$translations['result-temp']?><?=$temperature?> °C<br>
-                        <?=$translations['result-temp-felt']?><?=$temperatureFelt?> °C<br>
-                        <?=$translations['result-temp-min']?><?=$temperatureMin?> °C<br>
-                        <?=$translations['result-temp-max']?><?=$temperatureMax?> °C
+                        <?=$translations['result-temp']?><span class="data-numbers"><b><?=$temperature?></b> °C</span><br>
+                        <?=$translations['result-temp-felt']?><span class="data-numbers"><b><?=$temperatureFelt?></b> °C</span><br>
+                        <?=$translations['result-temp-min']?><span class="data-numbers"><b><?=$temperatureMin?></b> °C</span><br>
+                        <?=$translations['result-temp-max']?><span class="data-numbers"><b><?=$temperatureMax?></b> °C</span>
                     </p>
                 </div>
                 <div class="info-wind">
                     <p>
-                        <?=$translations['result-wind']?><?=$windSpeed?> m/s <br>
-                        <?=$translations['result-wind-dir']?>
+                        <?=$translations['result-wind']?><span class="data-numbers"><b><?=$windSpeed?></b> m/s</span>
                     </p>
                     <div id="image-container">
-                        <img class="background-image" src="/images/compass.png">
-                        <img id="wind-arrow" src="/images/arrow.png" style="
+                        <img class="background-image" src="/images/compass.png" alt="compass, showing in clockwise order: North, East, South, West">
+                        <img id="wind-arrow" src="/images/arrow.png" alt="arrow pointed towards <?=$windDirection?> degress from south clockwise" style="
                             position: absolute;
                             left: 50%;
                             top: 50%;
@@ -126,13 +125,16 @@ if (strpos($headers[0], '200') !== false) {
             </div>
             <div class="result-wrapper flex">
                 <div class="info-weather">
-                    <img src=<?=$iconURL?> alt=<?=$description?>> <br>
+                    <h3><?=$description?></h3>
+                    <div>
+                        <img src=<?=$iconURL?> alt=<?=$description?>>
+                    </div>
                     <p>
-                        <?=$translations['result-weather']?><?=$description?> <br>
-                        <?=$translations['result-weather-hum']?><?=$humidty?>% <br>
-                        <?=$translations['result-weather-clo']?><?=$cloudiness?>%
+                        
+                        <?=$translations['result-weather-hum']?><span class="data-numbers"><b><?=$humidty?></b>%</span><br>
+                        <?=$translations['result-weather-clo']?><span class="data-numbers"><b><?=$cloudiness?></b>%</span>
                     </p>
-                    <p><?=$translations['result-pressure']?><?=$pressure?> hPa</p>
+                    <p><?=$translations['result-pressure']?><span class="data-numbers"><b><?=$pressure?></b> hPa</span></p>
                 </div>
             </div>
         </div>
