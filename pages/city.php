@@ -1,10 +1,10 @@
 <?php
 $serverRoot = $_SERVER['DOCUMENT_ROOT'];
-echo $serverRoot;
+$projectRoot = "/weather-app-project";
 session_start();
-if (!isset($_GET["city"])) {
-    header("Location: ../index.php");
-}
+// if (!isset($_GET["city"])) {
+//     header("Location: ../index.php");
+// }
 define("API_KEY", "1a59599823b73a08ff71aba0ad51f85c");
 //Translation handling
 require("../php/translation.php");
@@ -32,7 +32,7 @@ if (strpos($headers[0], '200') !== false) {
     $humidty = $result['main']['humidity'];
     $cloudiness = $result['clouds']['all'];
     $iconURL = $result['weather'][0]['icon'];
-    $iconURL = "https://openweathermap.org/img/wn/$iconURL.png"; //icon@2x.png also
+    $iconURL = "https://openweathermap.org/img/wn/$iconURL@2x.png"; //icon@2x.png also
 
     $windSpeed = $result['wind']['speed'];
     $windDirection = $result['wind']['deg'];
@@ -53,7 +53,7 @@ if (strpos($headers[0], '200') !== false) {
 <?php require('../includes/header.php') ?>
     <main id="main">
         <div class="result flex">
-        <h2><?=$city?>, <script>createUserTime(<?=$timeOfData?>)</script></h2>
+        <h2><?=$city?>, <?=$timeOfData?> UTC</h2>
             <div class="result-wrapper flex">
                 <div class="info-temperature">
                     <p>
@@ -68,8 +68,8 @@ if (strpos($headers[0], '200') !== false) {
                         <?=$translations['result-wind']?><span class="data-numbers"><b><?=$windSpeed?></b> m/s</span>
                     </p>
                     <div id="image-container">
-                        <img class="background-image" src="/images/compass.png" alt="compass, showing in clockwise order: North, East, South, West">
-                        <img id="wind-arrow" src="/images/arrow.png" alt="arrow pointed towards <?=$windDirection?> degress from south clockwise" style="
+                        <img class="background-image" src="<?=$projectRoot?>/images/compass.png" alt="compass, showing in clockwise order: North, East, South, West">
+                        <img id="wind-arrow" src="<?=$projectRoot?>/images/arrow.png" alt="arrow pointed towards <?=$windDirection?> degress from south clockwise" style="
                             position: absolute;
                             left: 50%;
                             top: 50%;

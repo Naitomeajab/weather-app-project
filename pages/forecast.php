@@ -1,5 +1,6 @@
 <?php
 $serverRoot = $_SERVER['DOCUMENT_ROOT'];
+$projectRoot = "/weather-app-project";
 session_start();
 if (!isset($_GET["city"])) {
     header("Location: ../index.php");
@@ -110,8 +111,8 @@ if (strpos($headers[0], '200') !== false) {
                         <?=$translations['result-wind']?><span class="data-numbers"><b><?=$windSpeed?></b> m/s</span>
                     </p>
                     <div id="image-container">
-                        <img class="background-image" src="/images/compass.png" alt="compass, showing in clockwise order: North, East, South, West">
-                        <img id="wind-arrow" src="/images/arrow.png" alt="arrow pointed towards <?=$windDirection?> degress from south clockwise" style="
+                        <img class="background-image" src="<?=$projectRoot?>/images/compass.png" alt="compass, showing in clockwise order: North, East, South, West">
+                        <img id="wind-arrow" src="<?=$projectRoot?>/images/arrow.png" alt="arrow pointed towards <?=$windDirection?> degress from south clockwise" style="
                             position: absolute;
                             left: 50%;
                             top: 50%;

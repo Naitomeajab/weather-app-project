@@ -1,5 +1,6 @@
 <?php
 $serverRoot = $_SERVER['DOCUMENT_ROOT'];
+$projectRoot = "/weather-app-project";
 session_start();
 if(isset($_SESSION["error"])){
     echo $_SESSION["error"];
