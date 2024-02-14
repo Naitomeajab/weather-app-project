@@ -1,5 +1,6 @@
 <?php
 $serverRoot = $_SERVER['DOCUMENT_ROOT'];
+echo $serverRoot;
 session_start();
 if (!isset($_GET["city"])) {
     header("Location: ../index.php");
@@ -20,7 +21,7 @@ if (strpos($headers[0], '200') !== false) {
     $response = file_get_contents($apiUrl);
     $result = json_decode($response, true);    
 
-    $timeOfData = date("H:i", $result['dt']);
+    $timeOfData = gmdate("H:i", $result['dt']);
 
     $temperature = $result['main']['temp'];
     $temperatureFelt = $result['main']['feels_like'];
@@ -41,8 +42,8 @@ if (strpos($headers[0], '200') !== false) {
     $sunrise = $result['sys']['sunrise'];
     $sunset = $result['sys']['sunset'];
 
-    $sunrise = date("H:i", $sunrise);
-    $sunset = date("H:i", $sunset);
+    $sunrise = gmdate("H:i", $sunrise);
+    $sunset = gmdate("H:i", $sunset);
 } else {
     //API error
     $_SESSION['error'] = "Can't find the city, check spelling.";
@@ -52,7 +53,7 @@ if (strpos($headers[0], '200') !== false) {
 <?php require('../includes/header.php') ?>
     <main id="main">
         <div class="result flex">
-        <h2><?=$city?>, <?=$timeOfData?></h2>
+        <h2><?=$city?>, <script>createUserTime(<?=$timeOfData?>)</script></h2>
             <div class="result-wrapper flex">
                 <div class="info-temperature">
                     <p>
@@ -96,7 +97,4 @@ if (strpos($headers[0], '200') !== false) {
             </div>
         </div>
     </main>
-    <style>
-
-    </style>
 <?php require('../includes/footer.php') ?>

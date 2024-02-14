@@ -74,7 +74,7 @@ if (strpos($headers[0], '200') !== false) {
         for($j = 1; $j <= count($groupedResults[$i]); $j++){
             $result = $groupedResults[$i][$j];
 
-            $timeOfData = date("H:i", $result['dt']);
+            $timeOfData = gmdate("H:i", $result['dt']);
             // $timeOfData = $result['dt_txt'];
 
             $temperature = $result['main']['temp'];
